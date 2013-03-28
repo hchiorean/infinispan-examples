@@ -24,7 +24,6 @@ package org.infinispan.examples.partialreplication;
 
 import java.io.Console;
 import org.infinispan.Cache;
-import static org.infinispan.examples.partialreplication.Node1.BIKE1;
 
 /**
  * 
@@ -42,20 +41,17 @@ public class Node0 extends AbstractNode {
     }
 
     public void run() {
-        Cache<String, Bicycle> cache = getCacheManager().getCache("Demo");
+        Cache<String, Bicycle> cache = bicyclesCache();
 
         waitForClusterToForm();
 
         Console con = System.console();
         con.printf(initialPrompt);
         while (true) {
-
             String action = con.readLine(">");
 
             if ("p".equals(action)) {
-
-                System.out.println(cache.get(BIKE1));
-
+                printCacheContents(cache);
             } else if ("q".equals(action)) {
                 System.exit(0);
             }
@@ -66,5 +62,4 @@ public class Node0 extends AbstractNode {
     protected int getNodeId() {
         return 0;
     }
-
 }

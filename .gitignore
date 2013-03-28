@@ -12,6 +12,7 @@ atlassian-ide-plugin.xml
 
 # Object files
 ObjectStore
+PutObjectStoreDirHere
 
 # Compiled python files
 *.pyc
